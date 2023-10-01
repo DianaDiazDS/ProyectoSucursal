@@ -21,7 +21,7 @@ public class User implements Serializable{
 
 
 	@Id	   
-	@Column(name = "IDUSER")
+	@Column(name = "ID_USER")
 	private Long idUser;
 	
 	@Column(name = "FIRSTNAME")
@@ -45,7 +45,7 @@ public class User implements Serializable{
 	@Column(name = "SCORE")
 	private String score;
 	
-	@Column (name = "CASHINCOME")
+	@Column (name = "CASH_INCOME")
     private double cashIncome;
 	
 	

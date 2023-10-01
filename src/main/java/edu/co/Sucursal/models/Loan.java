@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Loan {
 
     @Id
-    @Column(name = "IDLOAN")
+    @Column(name = "ID_LOAN")
     private Long idLoan;
     @Column(name = "REPORT_TYPE")
     private String reportType;
