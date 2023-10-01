@@ -49,17 +49,17 @@ public class User implements Serializable{
     private double cashIncome;
 	
 	
-	@OneToMany(mappedBy = "USER", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonManagedReference
 	@JsonIgnoreProperties("tags")
-	private List<Loan> loan;	
+	private List<Loan> loans;	
 	
-	public List<Loan> getLoan() {
-		return loan;
+	public List<Loan> getLoans() {
+		return loans;
 	}
 
-	public void setLoan(List<Loan> loan) {
-		this.loan = loan;
+	public void setLoans(List<Loan> loans) {
+		this.loans = loans;
 	}
 
 	public Long getIdUser() {

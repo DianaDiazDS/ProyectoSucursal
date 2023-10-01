@@ -25,7 +25,7 @@ public class BranchOffice {
     @Column(name = "PASSWORD")
     private String password;
 
-    @OneToMany(mappedBy = "BRANCHOFFICE", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "branchOffice", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
     @JsonIgnoreProperties("tags")
     private List<Loan> loans;

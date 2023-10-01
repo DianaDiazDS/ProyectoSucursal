@@ -9,23 +9,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.co.Sucursal.models.User;
-import edu.co.Sucursal.services.ServiceUser;
+import edu.co.Sucursal.models.Loan;
+import edu.co.Sucursal.services.ServiceLoan;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/loan")
 public class ControllerLoan {
 	@Autowired
-	private ServiceUser serviceUser;
+	private ServiceLoan serviceLoan;
 	
-	@GetMapping("/listUsers")
-	public List<User> listUsers() {
-		return serviceUser.listUsers();
+	@GetMapping("/listLoans")
+	public List<Loan> listLoans() {
+		return serviceLoan.listLoans();
 	}
 	
-	 @GetMapping("/getUser/{idUser}") public User getUser(@PathVariable Long
-	idUser) { return serviceUser.getUser(idUser); }
+	 @GetMapping("/getLoan/{idLoan}") public Loan getLoan(@PathVariable Long
+	idLoan) { return serviceLoan.getLoan(idLoan); }
 			  
 	
 }
