@@ -2,11 +2,18 @@ package edu.co.Sucursal.models;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table (name = "USER")
@@ -42,10 +49,22 @@ public class User implements Serializable{
     private double cashIncome;
 	
 	
+	@OneToMany(mappedBy = "user", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonManagedReference
+	@JsonIgnoreProperties("tags")
+	private List<Loan> loan;
 	
 	
 	
 	
+
+	public List<Loan> getLoan() {
+		return loan;
+	}
+
+	public void setLoan(List<Loan> loan) {
+		this.loan = loan;
+	}
 
 	public Long getId() {
 		return id;
@@ -109,6 +128,14 @@ public class User implements Serializable{
 
 	public void setCashIncome(double cashIncome) {
 		this.cashIncome = cashIncome;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	
