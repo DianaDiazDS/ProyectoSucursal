@@ -1,10 +1,14 @@
 package edu.co.Sucursal.repositories;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
+import edu.co.Sucursal.models.Empleado;
 import edu.co.Sucursal.models.User;
 
-public class IARepositoriUser {
+@Repository
+public interface IARepositoriUser extends JpaRepository<User, Long>{
 
 	
 	 @Query(value = "SELECT * FROM USER WHERE IDUSER = :idUser", nativeQuery = true)
