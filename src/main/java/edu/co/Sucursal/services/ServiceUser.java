@@ -5,18 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import edu.co.Sucursal.models.User;
-import edu.co.Sucursal.repositories.IARepositoriUser;
+import edu.co.Sucursal.repositories.IARepositoryUser;
 
 public class ServiceUser {
 	 @Autowired
-	    private IARepositoriUser iaRepositoriUser;
+	    private IARepositoryUser iaRepositoryUser;
 	
 	 public User getUser(Long idUser) {
-	        return iaRepositoriUser.findByIdUserSQL(idUser);
+	        return iaRepositoryUser.findByIdUserSQL(idUser);
 	    }
 	 
 	 public List<User> listUsers() {
-	        return iaRepositoriUser.findAll();
+	        return iaRepositoryUser.findAll();
 	    }
 	
 }

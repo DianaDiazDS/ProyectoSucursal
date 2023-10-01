@@ -8,7 +8,7 @@ import edu.co.Sucursal.models.Empleado;
 import edu.co.Sucursal.models.User;
 
 @Repository
-public interface IARepositoriUser extends JpaRepository<User, Long>{
+public interface IARepositoryUser extends JpaRepository<User, Long>{
 
 	
 	 @Query(value = "SELECT * FROM USER WHERE IDUSER = :idUser", nativeQuery = true)
