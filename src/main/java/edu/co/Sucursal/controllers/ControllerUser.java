@@ -3,6 +3,7 @@ package edu.co.Sucursal.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,16 @@ public class ControllerUser {
         return serviceUser.listUsers();
     }
 	
+
+    @GetMapping("/calculateUserScore/{userId}")
+    public ResponseEntity<String> calculateUserScore(@PathVariable Long userId) {
+        int userScore = serviceUser.calculateUserScore(userId);
+        return ResponseEntity.ok("El puntaje del usuario es: " + userScore);
+    }
 	
+
+
+
+
 	
 }
