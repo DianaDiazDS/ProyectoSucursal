@@ -24,14 +24,15 @@ public class Loan {
     private String lastPaymentDate;
     @Column(name = "STATE")
     private String state;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
-    @JoinColumn(name = "USER" )
+    @JoinColumn(name = "FK_USER" )
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
-    @JoinColumn(name = "BRANCH_OFFICE" )
+    @JoinColumn(name = "FK_BRANCH_OFFICE" )
     private BranchOffice branchOffice;
 
     public Loan() {
