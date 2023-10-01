@@ -71,18 +71,12 @@ public class ServiceUser {
 	    }
 	}
 
-	// Método privado para calcular el puntaje basado en la diferencia entre "PAGO" y "NOPAGO"
 	private int calculateScoreBasedOnLoanDifference(int paidLoanCount, int unpaidLoanCount) {
-	
+	    
 	    int difference = paidLoanCount - unpaidLoanCount;
+	    int score = Math.abs(difference) * 10;
 
-	    if (difference > 0) {
-	        return 100;
-	    } else if (difference == 0) {
-	        return 75;
-	    } else {
-	        return 50;
-	    }
+	    return score;
 	}
 
 	
