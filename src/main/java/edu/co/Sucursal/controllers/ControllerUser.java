@@ -33,7 +33,6 @@ public class ControllerUser {
         return serviceUser.listUsers();
     }
 	
-
     @GetMapping("/calculateUserScore/{userId}")
     public ResponseEntity<String> calculateUserScore(@PathVariable Long userId) {
         int userScore = serviceUser.calculateUserScore(userId);
