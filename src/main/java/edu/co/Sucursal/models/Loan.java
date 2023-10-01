@@ -4,35 +4,35 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "LOAN")
+@Table(name = "loan")
 public class Loan {
 
     @Id
-    @Column(name = "ID_LOAN")
+    @Column(name = "id_loan")
     private Long idLoan;
-    @Column(name = "REPORT_TYPE")
+    @Column(name = "report_type")
     private String reportType;
-    @Column(name = "AMOUNT")
+    @Column(name = "amount")
     private int amount;
-    @Column(name = "TERM")
+    @Column(name = "term")
     private String term;
-    @Column(name = "INTEREST_RATE")
+    @Column(name = "interest_rate")
     private double insterestRate;
-    @Column(name = "LOAN_TYPE")
+    @Column(name = "loan_type")
     private String loanType;
-    @Column(name = "LAST_PAYMENT_DATE")
+    @Column(name = "last_payment_date")
     private String lastPaymentDate;
-    @Column(name = "STATE")
+    @Column(name = "state")
     private String state;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
-    @JoinColumn(name = "FK_USER" )
+    @JoinColumn(name = "fk_user" )
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
-    @JoinColumn(name = "FK_BRANCH_OFFICE" )
+    @JoinColumn(name = "fk_branch_office" )
     private BranchOffice branchOffice;
 
     public Loan() {

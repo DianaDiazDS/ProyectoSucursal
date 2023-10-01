@@ -1,7 +1,6 @@
 package edu.co.Sucursal.models;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,36 +15,36 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table (name = "USER")
+@Table (name = "user")
 public class User implements Serializable{
 
 
 	@Id	   
-	@Column(name = "ID_USER")
+	@Column(name = "id_user")
 	private Long idUser;
 	
-	@Column(name = "FIRSTNAME")
+	@Column(name = "firstname")
 	private String firstName;
 	
-	@Column(name = "LASTNAME")
+	@Column(name = "lastname")
 	private String lastName;
 	
-	@Column(name = "PHONE")
+	@Column(name = "phone")
 	private String phone;
 	
-	@Column(name = "EMAIL")
+	@Column(name = "email")
 	private String email;		
 	
-	@Column(name = "PASSWORD")
+	@Column(name = "password")
 	private String password;
 	
-	@Column(name = "JOB")
+	@Column(name = "job")
 	private String job;
 	
-	@Column(name = "SCORE")
+	@Column(name = "score")
 	private String score;
 	
-	@Column (name = "CASH_INCOME")
+	@Column (name = "cash_income")
     private double cashIncome;
 	
 	

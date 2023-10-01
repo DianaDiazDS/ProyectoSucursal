@@ -6,23 +6,23 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table (name = "BRANCHOFFICE")
+@Table (name = "branch_office")
 public class BranchOffice {
 
     @Id
-    @Column(name = "ID_BRANCH_OFFICE")
+    @Column(name = "id_branch_office")
     private Long idBranchOffice;
 
-    @Column(name = "NAME")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "ADDRESS")
+    @Column(name = "address")
     private String address;
 
-    @Column(name = "CITY")
+    @Column(name = "city")
     private String city;
 
-    @Column(name = "PASSWORD")
+    @Column(name = "password")
     private String password;
 
     @OneToMany(mappedBy = "branchOffice", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
