@@ -8,29 +8,29 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/sucursal")
+@RequestMapping("/branchOffice")
 public class ControllerBranchOffice {
 
     @Autowired
     private ServiceBranchOffice branchOfficeService;
 
-    @GetMapping("/listSucursales")
+    @GetMapping("/listBranchOffice")
     public List<BranchOffice> listBranchOffices() {
         return branchOfficeService.listBranchOffices();
     }
 
-    @PostMapping("/saveSucursal")
-    public BranchOffice savePaciente(@RequestBody BranchOffice branchOffice) {
+    @PostMapping("/saveBranchOffice")
+    public BranchOffice saveBranchOffice(@RequestBody BranchOffice branchOffice) {
         return branchOfficeService.saveBranchOffice(branchOffice);
     }
 
-    @DeleteMapping("/deleteSucursal/{idBranchOffice}")
-    public void deletePaciente(@PathVariable Long idBranchOffice) {
+    @DeleteMapping("/deleteBranchOffice/{idBranchOffice}")
+    public void deleteBranchOffice(@PathVariable Long idBranchOffice) {
         branchOfficeService.deleteBranchOffice(idBranchOffice);
     }
 
-    @PutMapping("/updateSucursal/{idBranchOffice}")
-    public BranchOffice updatePaciente(@PathVariable Long idBranchOffice, @RequestBody BranchOffice branchOffice) {
+    @PutMapping("/updateBranchOffice/{idBranchOffice}")
+    public BranchOffice updateBranchOffice(@PathVariable Long idBranchOffice, @RequestBody BranchOffice branchOffice) {
         return branchOfficeService.updateBranchOffice(idBranchOffice, branchOffice);
     }
 }

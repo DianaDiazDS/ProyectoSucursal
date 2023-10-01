@@ -1,17 +1,9 @@
 package edu.co.Sucursal.controllers;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import edu.co.Sucursal.models.User;
 import edu.co.Sucursal.services.ServiceUser;
 
@@ -32,17 +24,25 @@ public class ControllerUser {
     public List<User> listUsers() {
         return serviceUser.listUsers();
     }
-	
 
     @GetMapping("/calculateUserScore/{userId}")
     public ResponseEntity<String> calculateUserScore(@PathVariable Long userId) {
         int userScore = serviceUser.calculateUserScore(userId);
         return ResponseEntity.ok("El puntaje del usuario es: " + userScore);
     }
-	
 
+    @PostMapping("/saveUser")
+    public User saveUser(@RequestBody User user) {
+        return serviceUser.saveUser(user);
+    }
 
+    @DeleteMapping("/deleteUser/{idUser}")
+    public void deleteUser(@PathVariable Long idUser) {
+        serviceUser.deleteUser(idUser);
+    }
 
-
-	
+    @PutMapping("/updateUser/{idUser}")
+    public User updateUser(@PathVariable Long idUser, @RequestBody User user) {
+        return serviceUser.updateUser(idUser, user);
+    }
 }

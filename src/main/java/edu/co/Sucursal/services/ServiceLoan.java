@@ -15,8 +15,6 @@ public class ServiceLoan {
 
     @Autowired
     private IARepositoryLoan iaRepositoryLoan;
-	@Autowired
-	private IARepositoryUser iaRepositoryUser;
 
     public List<Loan> listLoans() {
         return iaRepositoryLoan.findAll();
@@ -26,21 +24,22 @@ public class ServiceLoan {
         return iaRepositoryLoan.findByIdLoanSQL(idLoan);
     }
 
-	public Loan saveLoan(Loan loan) {
-		if (loan.getUser().getScore() > 0){
+    public Loan saveLoan(Loan loan) {
+        if (loan.getUser().getScore() > 0) {
+            iaRepositoryLoan.save(loan);
+            return loan;
+        } else {
+            throw new IllegalArgumentException("El puntaje del usuario es menor o igual a cero.");
+        }
+    }
 
-		}
-		iaRepositoryLoan.save(loan);
-		return loan;
-	}
+    public void deleteLoan(Long idLoan) {
+        iaRepositoryLoan.deleteById(idLoan);
+    }
 
-	public void deleteLoan(Long idLoan) {
-		iaRepositoryLoan.deleteById(idLoan);
-	}
-
-	public Loan updateLoan(Long idLoan, Loan Loan) {
-		Loan loan = iaRepositoryLoan.findByIdLoanSQL(idLoan);
-		iaRepositoryLoan.save(Loan);
-		return loan;
-	}
+    public Loan updateLoan(Long idLoan, Loan Loan) {
+        Loan loan = iaRepositoryLoan.findByIdLoanSQL(idLoan);
+        iaRepositoryLoan.save(Loan);
+        return loan;
+    }
 }

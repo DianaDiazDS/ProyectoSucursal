@@ -2,12 +2,9 @@ package edu.co.Sucursal.controllers;
 
 import java.util.List;
 
+import edu.co.Sucursal.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import edu.co.Sucursal.models.Loan;
 import edu.co.Sucursal.services.ServiceLoan;
@@ -16,16 +13,31 @@ import edu.co.Sucursal.services.ServiceLoan;
 @CrossOrigin
 @RequestMapping("/loan")
 public class ControllerLoan {
-	@Autowired
-	private ServiceLoan serviceLoan;
-	
-	@GetMapping("/listLoans")
-	public List<Loan> listLoans() {
-		return serviceLoan.listLoans();
-	}
-	
-	 @GetMapping("/getLoan/{idLoan}") public Loan getLoan(@PathVariable Long
-	idLoan) { return serviceLoan.getLoan(idLoan); }
-			  
-	
+    @Autowired
+    private ServiceLoan serviceLoan;
+
+    @GetMapping("/listLoans")
+    public List<Loan> listLoans() {
+        return serviceLoan.listLoans();
+    }
+
+    @GetMapping("/getLoan/{idLoan}")
+    public Loan getLoan(@PathVariable Long idLoan) {
+        return serviceLoan.getLoan(idLoan);
+    }
+
+    @PostMapping("/saveLoan")
+    public Loan saveLoan(@RequestBody Loan loan) {
+        return serviceLoan.saveLoan(loan);
+    }
+
+    @DeleteMapping("/deleteLoan/{idLoan}")
+    public void deleteLoan(@PathVariable Long idLoan) {
+        serviceLoan.deleteLoan(idLoan);
+    }
+
+    @PutMapping("/updateLoan/{idLoan}")
+    public Loan updateLoan(@PathVariable Long idLoan, @RequestBody Loan loan) {
+        return serviceLoan.updateLoan(idLoan, loan);
+    }
 }
