@@ -1,6 +1,8 @@
+
 package edu.co.Sucursal.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import edu.co.Sucursal.models.BranchOffice;
 import edu.co.Sucursal.models.Loan;
@@ -44,14 +46,16 @@ public class ServiceUser {
 	    User user = iaRepositoryUser.findById(userId).orElse(null);
 
 	    if (user != null) {
-	        // Obtén la lista de préstamos del usuario
-	        List<Loan> loans = user.getLoans();
+	        // Obtén la lista de préstamos del usuario con estado "PAGO"
+	        List<Loan> paidLoans = user.getLoans().stream()
+	            .filter(loan -> "PAGO".equals(loan.getState()))
+	            .collect(Collectors.toList());
 
-	        // Calcula la cantidad de préstamos del usuario
-	        int loanCount = loans != null ? loans.size() : 0;
+	        // Calcula la cantidad de préstamos con estado "PAGO" del usuario
+	        int paidLoanCount = paidLoans.size();
 
-	        // Asigna un puntaje basado en la cantidad de préstamos (puedes definir tu propia lógica)
-	        int score = calculateScoreBasedOnLoanCount(loanCount);
+	        // Asigna un puntaje basado en la cantidad de préstamos "PAGO" (puedes definir tu propia lógica)
+	        int score = calculateScoreBasedOnPaidLoanCount(paidLoanCount);
 
 	        // Actualiza el puntaje del usuario en la base de datos (si es necesario)
 	        user.setScore(score);
@@ -65,20 +69,20 @@ public class ServiceUser {
 	    }
 	}
 
-	// Método privado para calcular el puntaje basado en la cantidad de préstamos (puedes definir tu propia lógica)
-	private int calculateScoreBasedOnLoanCount(int loanCount) {
-	    // Define tu lógica para asignar un puntaje basado en la cantidad de préstamos
-	    // Por ejemplo, puedes asignar más puntaje si el usuario tiene menos préstamos
+	// Método privado para calcular el puntaje basado en la cantidad de préstamos "PAGO" (puedes definir tu propia lógica)
+	private int calculateScoreBasedOnPaidLoanCount(int paidLoanCount) {
+	    // Define tu lógica para asignar un puntaje basado en la cantidad de préstamos "PAGO"
+	    // Por ejemplo, puedes asignar más puntaje si el usuario tiene más préstamos "PAGO"
 	    // o viceversa.
 	    // Aquí tienes un ejemplo simple:
-	    if (loanCount < 5) {
+	    if (paidLoanCount > 5) {
 	        return 100;
-	    } else if (loanCount < 10) {
+	    } else if (paidLoanCount > 10) {
 	        return 75;
 	    } else {
 	        return 50;
 	    }
-	}	
+	}
 
 	
 }
