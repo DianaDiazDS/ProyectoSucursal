@@ -42,7 +42,7 @@ public class User implements Serializable{
 	private String job;
 	
 	@Column(name = "score")
-	private String score;
+	private int score;
 	
 	@Column (name = "cash_income")
     private double cashIncome;
@@ -109,11 +109,11 @@ public class User implements Serializable{
 		this.job = job;
 	}
 
-	public String getScore() {
+	public int getScore() {
 		return score;
 	}
 
-	public void setScore(String score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 

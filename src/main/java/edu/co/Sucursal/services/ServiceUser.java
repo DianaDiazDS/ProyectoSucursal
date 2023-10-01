@@ -54,7 +54,7 @@ public class ServiceUser {
 	        int score = calculateScoreBasedOnLoanCount(loanCount);
 
 	        // Actualiza el puntaje del usuario en la base de datos (si es necesario)
-	        user.setScore(String.valueOf(score));
+	        user.setScore(score);
 	        iaRepositoryUser.save(user);
 
 	        // Devuelve el puntaje calculado

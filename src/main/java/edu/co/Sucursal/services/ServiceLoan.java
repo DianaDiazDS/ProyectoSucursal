@@ -27,6 +27,9 @@ public class ServiceLoan {
     }
 
 	public Loan saveLoan(Loan loan) {
+		if (loan.getUser().getScore() > 0){
+
+		}
 		iaRepositoryLoan.save(loan);
 		return loan;
 	}
