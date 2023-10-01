@@ -2,6 +2,7 @@ package edu.co.Sucursal.services;
 
 import java.util.List;
 
+import edu.co.Sucursal.models.BranchOffice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +21,20 @@ public class ServiceUser {
 	 public List<User> listUsers() {
 	        return iaRepositoryUser.findAll();
 	    }
+
+	public User saveUser(User User) {
+		iaRepositoryUser.save(User);
+		return User;
+	}
+
+	public void deleteUser(Long idBranchOffice) {
+		iaRepositoryUser.deleteById(idBranchOffice);
+	}
+
+	public User updateUser(Long idUser, User User) {
+		User user = iaRepositoryUser.findByIdUserSQL(idUser);
+		iaRepositoryUser.save(User);
+		return user;
+	}
 	
 }

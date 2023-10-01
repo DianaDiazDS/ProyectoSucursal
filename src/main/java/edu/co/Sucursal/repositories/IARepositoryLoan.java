@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import edu.co.Sucursal.models.Loan;
 
-public interface IARepositoriLoan extends JpaRepository<Loan, Long> {
+public interface IARepositoryLoan extends JpaRepository<Loan, Long> {
 
   @Query(value = "SELECT * FROM LOAN WHERE ID_LOAN = :idLoan", nativeQuery =
   true) Loan findByIdLoanSQL(Long idLoan);

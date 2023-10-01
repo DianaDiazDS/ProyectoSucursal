@@ -7,13 +7,9 @@ import org.springframework.stereotype.Repository;
 import edu.co.Sucursal.models.User;
 
 @Repository
-public interface IARepositoryUser extends JpaRepository<User, Long>{
+public interface IARepositoryUser extends JpaRepository<User, Long> {
 
-	
-	 @Query(value = "SELECT * FROM USER WHERE ID_USER = :idUser", nativeQuery = true)
-	    User findByIdUserSQL(Long idUser);	
-	
-	 
-	 
-	 
+    @Query(value = "SELECT * FROM USER WHERE ID_USER = :idUser", nativeQuery = true)
+    User findByIdUserSQL(Long idUser);
+
 }
