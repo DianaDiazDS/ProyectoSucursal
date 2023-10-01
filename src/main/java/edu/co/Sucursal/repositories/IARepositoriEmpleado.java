@@ -35,6 +35,5 @@ public interface IARepositoriEmpleado extends JpaRepository<Empleado, Long>{
 	 
 	    @Query("SELECT e FROM Empleado e WHERE e.salary > :salario")
 	    List<Empleado> findEmpleadosConSalarioMayorA(@Param("salario") double salario);
-
 	
 }

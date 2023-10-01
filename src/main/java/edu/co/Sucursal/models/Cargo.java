@@ -47,9 +47,8 @@ public class Cargo  implements Serializable{
 	@JsonBackReference
 	@JoinColumn(name = "FK_IDEMPLEADO" )
 	private Empleado empleado;
-	
-    
-    
+
+
     public Cargo() {
     	
     }
