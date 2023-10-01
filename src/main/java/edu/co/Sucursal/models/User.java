@@ -19,10 +19,10 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Table (name = "USER")
 public class User implements Serializable{
 
-	private static final long serialVersionUID = 1L;
+
 	@Id	   
-	@Column(name = "ID")
-	private Long id;
+	@Column(name = "IDUSER")
+	private Long idUser;
 	
 	@Column(name = "FIRSTNAME")
 	private String firstName;
@@ -49,15 +49,11 @@ public class User implements Serializable{
     private double cashIncome;
 	
 	
-	@OneToMany(mappedBy = "user", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "USER", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonManagedReference
 	@JsonIgnoreProperties("tags")
-	private List<Loan> loan;
+	private List<Loan> loan;	
 	
-	
-	
-	
-
 	public List<Loan> getLoan() {
 		return loan;
 	}
@@ -66,12 +62,12 @@ public class User implements Serializable{
 		this.loan = loan;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getIdUser() {
+		return idUser;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long idUser) {
+		this.idUser = idUser;
 	}
 
 	public String getFirstName() {
