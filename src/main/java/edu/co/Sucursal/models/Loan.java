@@ -1,6 +1,7 @@
 package edu.co.Sucursal.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -24,15 +25,13 @@ public class Loan {
     private String lastPaymentDate;
     @Column(name = "state")
     private String state;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference
-    @JoinColumn(name = "fk_user" )
+
+    @ManyToOne
+    @JoinColumn(name = "fk_user")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference
-    @JoinColumn(name = "fk_branch_office" )
+    @ManyToOne
+    @JoinColumn(name = "fk_branch_office")
     private BranchOffice branchOffice;
 
     public Loan() {
