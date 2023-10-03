@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.example.demo.DTOs.UserDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -44,6 +45,15 @@ public class User {
     @OneToMany(mappedBy = "user", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnoreProperties("user")
     private List<Loan> loans;
+    
+    public UserDTO toDTO() {
+		UserDTO userDTO = new UserDTO();
+		
+		userDTO.setIdUser(idUser);
+		userDTO.setPassword(password);
+		
+		return userDTO;
+	}
 
     public List<Loan> getLoans() {
         return loans;

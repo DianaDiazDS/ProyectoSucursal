@@ -4,6 +4,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.example.demo.DTOs.UserDTO;
+
 import edu.co.Sucursal.models.User;
 import edu.co.Sucursal.services.ServiceUser;
 
@@ -25,6 +28,11 @@ public class ControllerUser {
         return serviceUser.listUsers();
     }
 
+    @GetMapping("/listPersonsDTO")
+	public List<UserDTO> listUsersDTO() {
+		return serviceUser.listUsersDTO();
+	}
+    
     @GetMapping("/calculateUserScore/{userId}")
     public ResponseEntity<String> calculateUserScore(@PathVariable Long userId) {
         int userScore = serviceUser.calculateUserScore(userId);

@@ -1,6 +1,7 @@
 
 package edu.co.Sucursal.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,6 +10,8 @@ import edu.co.Sucursal.models.Loan;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.demo.DTOs.UserDTO;
 
 import edu.co.Sucursal.models.User;
 import edu.co.Sucursal.repositories.IARepositoryUser;
@@ -21,6 +24,17 @@ public class ServiceUser {
 	 public User getUser(Long idUser) {
 	        return iaRepositoryUser.findByIdUserSQL(idUser);
 	    }
+	 
+	 
+	 public List<UserDTO> listUsersDTO(){
+			List<User> Users = iaRepositoryUser.findAll();
+			List<UserDTO> UserDTOs = new ArrayList<>();
+			for (User User : Users) {
+				UserDTOs.add(User.toDTO());
+			}
+			return UserDTOs;
+		}
+		
 	 
 	 public List<User> listUsers() {
 	        return iaRepositoryUser.findAll();
