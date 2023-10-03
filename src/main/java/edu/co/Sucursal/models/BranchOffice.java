@@ -1,5 +1,6 @@
 package edu.co.Sucursal.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
@@ -25,7 +26,8 @@ public class BranchOffice {
     @Column(name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "branchOffice")
+    @OneToMany(mappedBy = "branchOffice", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("branchOffice")
     private List<Loan> loans;
 
     public Long getIdBranchOffice() {

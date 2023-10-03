@@ -1,6 +1,8 @@
 package edu.co.Sucursal.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -26,12 +28,16 @@ public class Loan {
     @Column(name = "state")
     private String state;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_user")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "fk_user" )
+    @JsonIgnoreProperties("loans")
     private User user;
+    
 
-    @ManyToOne
-    @JoinColumn(name = "fk_branch_office")
+
+    @ManyToOne(fetch = FetchType.EAGER)   
+    @JoinColumn(name = "fk_branch_office" )
+    @JsonIgnoreProperties("loans")
     private BranchOffice branchOffice;
 
     public Loan() {

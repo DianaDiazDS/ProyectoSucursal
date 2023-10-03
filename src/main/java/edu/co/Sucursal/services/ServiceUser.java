@@ -59,7 +59,7 @@ public class ServiceUser {
 	        int paidLoanCount = paidLoans.size();
 	        int unpaidLoanCount = unpaidLoans.size();
 
-	        int score = calculateScoreBasedOnLoanDifference(paidLoanCount, unpaidLoanCount);
+	        int score = calculateScoreBasegitdOnLoanDifference(paidLoanCount, unpaidLoanCount);
 	        
 	        user.setScore(score); 
 	        iaRepositoryUser.save(user);
@@ -71,10 +71,10 @@ public class ServiceUser {
 	    }
 	}
 
-	private int calculateScoreBasedOnLoanDifference(int paidLoanCount, int unpaidLoanCount) {
+	private int calculateScoreBasegitdOnLoanDifference(int paidLoanCount, int unpaidLoanCount) {
 	    
 	    int difference = paidLoanCount - unpaidLoanCount;
-	    int score = Math.abs(difference) * 10;
+	    int score = (difference) * 10;
 
 	    return score;
 	}

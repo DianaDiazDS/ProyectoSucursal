@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -39,8 +40,9 @@ public class User {
 
     @Column(name = "cash_income")
     private double cashIncome;
-
-    @OneToMany(mappedBy = "user")
+    
+    @OneToMany(mappedBy = "user", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("user")
     private List<Loan> loans;
 
     public List<Loan> getLoans() {
