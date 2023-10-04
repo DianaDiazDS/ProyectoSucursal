@@ -2,6 +2,7 @@ package edu.co.Sucursal.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import edu.co.Sucursal.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,5 +93,25 @@ public class ServiceLoan {
         }
 
         return loanDTOs;
+    }
+    
+    
+    public Loan updateLoanAmount(Long idLoan, int amountToSubtract) {
+        Loan loan = iaRepositoryLoan.findById(idLoan).orElse(null);
+
+        if (loan != null) {
+            int currentAmount = loan.getAmount();
+
+            if (amountToSubtract >= 0 && currentAmount >= amountToSubtract) {
+                int updatedAmount = currentAmount - amountToSubtract;
+                loan.setAmount(updatedAmount);
+                iaRepositoryLoan.save(loan);
+                return loan;
+            } else {
+                throw new IllegalArgumentException("El monto a restar es mayor que el monto actual o es un valor negativo.");
+            }
+        } else {
+            throw new NoSuchElementException("Préstamo no encontrado con ID: " + idLoan);
+        }
     }
 }

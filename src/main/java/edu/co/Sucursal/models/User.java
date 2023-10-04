@@ -43,6 +43,13 @@ public class User {
     @JsonIgnoreProperties("user")
     private List<Loan> loans;
     
+	/*
+	 * @OneToMany(mappedBy = "user", orphanRemoval = true, fetch = FetchType.EAGER,
+	 * cascade = CascadeType.ALL)
+	 * 
+	 * @JsonIgnoreProperties("user") private List<HistorialPagos> historialPago;
+	 */
+    
     public UserDTO toDTO() {
 		UserDTO userDTO = new UserDTO();
 		

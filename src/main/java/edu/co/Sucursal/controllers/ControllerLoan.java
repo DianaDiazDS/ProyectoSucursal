@@ -64,4 +64,9 @@ public class ControllerLoan {
             return ResponseEntity.ok(loanDTOs);
         }
     }
+    
+    @PutMapping("/updateMonto/{idLoan}")
+    public Loan updateLoanAmount(@PathVariable Long idLoan, @RequestParam("newAmount") int newAmount) {
+        return serviceLoan.updateLoanAmount(idLoan, newAmount);
+    }
 }
