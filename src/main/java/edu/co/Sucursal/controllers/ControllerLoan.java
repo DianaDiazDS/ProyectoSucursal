@@ -30,10 +30,6 @@ public class ControllerLoan {
     public Loan saveLoan(@RequestBody Loan loan) {
         return serviceLoan.saveLoan(loan);
     }
-    @PostMapping("/saveLoan2")
-    public Loan saveLoan2(@RequestBody Loan loan) {
-        return serviceLoan.saveLoan2(loan);
-    }  
 
     @DeleteMapping("/deleteLoan/{idLoan}")
     public void deleteLoan(@PathVariable Long idLoan) {
