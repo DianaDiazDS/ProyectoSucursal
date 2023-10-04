@@ -1,9 +1,12 @@
 package edu.co.Sucursal.services;
 
+import edu.co.Sucursal.DTOs.BranchOfficeDTO;
 import edu.co.Sucursal.models.BranchOffice;
 import edu.co.Sucursal.repositories.IARepositoryBranchOffice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -29,5 +32,14 @@ public class ServiceBranchOffice {
         BranchOffice branchOffice = iaRepositoryBranchOffice.findByIdBranchOffice(idBranchOffice);
         iaRepositoryBranchOffice.save(BranchOffice);
         return branchOffice;
+    }
+
+    public List<BranchOfficeDTO> listBranchOfficeDTO() {
+        List<BranchOffice> Users = iaRepositoryBranchOffice.findAll();
+        List<BranchOfficeDTO> UserDTOs = new ArrayList<>();
+        for (BranchOffice User : Users) {
+            UserDTOs.add(User.toDTO());
+        }
+        return UserDTOs;
     }
 }

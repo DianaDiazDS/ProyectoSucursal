@@ -3,6 +3,9 @@ package edu.co.Sucursal.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import edu.co.Sucursal.DTOs.BranchOfficeDTO;
+import edu.co.Sucursal.DTOs.UserDTO;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -29,6 +32,13 @@ public class BranchOffice {
     @OneToMany(mappedBy = "branchOffice", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnoreProperties("branchOffice")
     private List<Loan> loans;
+
+    public BranchOfficeDTO toDTO() {
+        BranchOfficeDTO branchOfficeDTO = new BranchOfficeDTO();
+        branchOfficeDTO.setIdBranchOffice(idBranchOffice);
+        branchOfficeDTO.setPassword(password);
+        return branchOfficeDTO;
+    }
 
     public Long getIdBranchOffice() {
         return idBranchOffice;

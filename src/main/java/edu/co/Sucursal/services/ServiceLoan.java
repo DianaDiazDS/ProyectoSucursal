@@ -1,12 +1,8 @@
 package edu.co.Sucursal.services;
 
 import java.util.List;
-
-import edu.co.Sucursal.models.User;
-import edu.co.Sucursal.repositories.IARepositoryUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import edu.co.Sucursal.models.Loan;
 import edu.co.Sucursal.repositories.IARepositoryLoan;
 

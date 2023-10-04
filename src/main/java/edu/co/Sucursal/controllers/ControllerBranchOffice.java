@@ -1,5 +1,6 @@
 package edu.co.Sucursal.controllers;
 
+import edu.co.Sucursal.DTOs.BranchOfficeDTO;
 import edu.co.Sucursal.models.BranchOffice;
 import edu.co.Sucursal.services.ServiceBranchOffice;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class ControllerBranchOffice {
     @PostMapping("/saveBranchOffice")
     public BranchOffice saveBranchOffice(@RequestBody BranchOffice branchOffice) {
         return branchOfficeService.saveBranchOffice(branchOffice);
+    }
+
+    @GetMapping("/listUsersDTO")
+    public List<BranchOfficeDTO> listUsersDTO() {
+        return branchOfficeService.listBranchOfficeDTO();
     }
 
     @DeleteMapping("/deleteBranchOffice/{idBranchOffice}")
