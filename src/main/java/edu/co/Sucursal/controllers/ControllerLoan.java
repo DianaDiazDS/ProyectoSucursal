@@ -4,8 +4,10 @@ import java.util.List;
 
 import edu.co.Sucursal.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import edu.co.Sucursal.DTOs.LoanDTO;
 import edu.co.Sucursal.models.Loan;
 import edu.co.Sucursal.services.ServiceLoan;
 
@@ -47,5 +49,19 @@ public class ControllerLoan {
         @PathVariable("loan_type") String loanType
     ) {
         return serviceLoan.listLoansByUserAndType(userId, loanType);
+    }
+    
+    @GetMapping("/findLoansByUserAndLoanType/{userId}/{loanType}")
+    public ResponseEntity<List<LoanDTO>> findLoansByUserAndLoanType(
+            @PathVariable Long userId,
+            @PathVariable String loanType) {
+        
+        List<LoanDTO> loanDTOs = serviceLoan.findLoansByUserIdAndLoanType(userId, loanType);
+        
+        if (loanDTOs.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(loanDTOs);
+        }
     }
 }

@@ -1,8 +1,17 @@
 package edu.co.Sucursal.services;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import edu.co.Sucursal.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import edu.co.Sucursal.DTOs.BranchOffice2DTO;
+import edu.co.Sucursal.DTOs.BranchOfficeDTO;
+import edu.co.Sucursal.DTOs.LoanDTO;
+import edu.co.Sucursal.DTOs.User2DTO;
+import edu.co.Sucursal.models.BranchOffice;
 import edu.co.Sucursal.models.Loan;
 import edu.co.Sucursal.repositories.IARepositoryLoan;
 
@@ -42,5 +51,46 @@ public class ServiceLoan {
     
     public List<Loan> listLoansByUserAndType(Long userId, String loanType) {
         return iaRepositoryLoan.findByUserIdAndLoanType(userId, loanType);
+    }
+    
+    public List<LoanDTO> findLoansByUserIdAndLoanType(Long userId, String loanType) {
+        // Realiza la consulta utilizando Spring Data JPA
+        List<Loan> loans = iaRepositoryLoan.findLoansByUserIdAndLoanType(userId, loanType);
+
+        // Mapea los resultados a LoanDTO
+        List<LoanDTO> loanDTOs = new ArrayList<>();
+        for (Loan loan : loans) {
+            LoanDTO loanDTO = new LoanDTO();
+            loanDTO.setIdLoan(loan.getIdLoan());
+            loanDTO.setReportType(loan.getReportType());
+            loanDTO.setAmount(loan.getAmount());
+            loanDTO.setTerm(loan.getTerm());
+            loanDTO.setInterestRate(loan.getInsterestRate());
+            loanDTO.setLoanType(loan.getLoanType());
+            loanDTO.setLastPaymentDate(loan.getLastPaymentDate());
+            loanDTO.setState(loan.getState());
+
+            // Mapea el usuario a User2DTO
+            User user = loan.getUser();
+            if (user != null) {
+                User2DTO userDTO = new User2DTO();
+                userDTO.setIdUser(user.getIdUser());                
+                loanDTO.setUser(userDTO);
+            }
+
+            // Mapea la sucursal a BranchOffice2DTO
+            BranchOffice branchOffice = loan.getBranchOffice();
+            if (branchOffice != null) {
+                BranchOffice2DTO branchOfficeDTO = new BranchOffice2DTO();
+                branchOfficeDTO.setIdBranchOffice(branchOffice.getIdBranchOffice());
+                branchOfficeDTO.setName(branchOffice.getName());
+                branchOfficeDTO.setCity(branchOffice.getCity());
+                loanDTO.setBranchOffice(branchOfficeDTO);
+            }
+
+            loanDTOs.add(loanDTO);
+        }
+
+        return loanDTOs;
     }
 }
