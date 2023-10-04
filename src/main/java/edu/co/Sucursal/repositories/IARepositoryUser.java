@@ -9,10 +9,10 @@ import edu.co.Sucursal.models.User;
 @Repository
 public interface IARepositoryUser extends JpaRepository<User, Long> {
 
-    @Query(value = "SELECT * FROM USER WHERE ID_USER = :idUser", nativeQuery = true)
+    @Query(value = "SELECT * FROM user WHERE id_user = :idUser", nativeQuery = true)
     User findByIdUserSQL(Long idUser);
 
-    @Query(value = "SELECT * FROM USER WHERE ID_USER = :idUser AND PASSWORD = :password", nativeQuery = true)
+    @Query(value = "SELECT * FROM user WHERE id_user = :idUser AND password = :password", nativeQuery = true)
     User findByUserLogin(Long idUser, String password);
 
 }

@@ -24,6 +24,10 @@ public class ServiceBranchOffice {
         return branchOffice;
     }
 
+    public BranchOffice getBranchOffice(Long idBranchOffice) {
+        return iaRepositoryBranchOffice.findByIdBranchOffice(idBranchOffice);
+    }
+
     public void deleteBranchOffice(Long idBranchOffice) {
         iaRepositoryBranchOffice.deleteById(idBranchOffice);
     }

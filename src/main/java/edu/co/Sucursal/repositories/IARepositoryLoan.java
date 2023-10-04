@@ -10,7 +10,7 @@ import edu.co.Sucursal.models.Loan;
 
 public interface IARepositoryLoan extends JpaRepository<Loan, Long> {
 
-  @Query(value = "SELECT * FROM LOAN WHERE ID_LOAN = :idLoan", nativeQuery =
+  @Query(value = "SELECT * FROM loan WHERE id_loan = :idLoan", nativeQuery =
   true) Loan findByIdLoanSQL(Long idLoan);
   
   

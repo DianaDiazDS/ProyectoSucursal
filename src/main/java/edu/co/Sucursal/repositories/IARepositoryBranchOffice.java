@@ -9,6 +9,6 @@ public interface IARepositoryBranchOffice extends JpaRepository<BranchOffice, Lo
 
     BranchOffice findByIdBranchOffice(Long idBranchOffice);
 
-    @Query(value = "SELECT * FROM BRANCH_OFFICE WHERE ID_BRANCH_OFFICE = :idUser AND PASSWORD = :password", nativeQuery = true)
+    @Query(value = "SELECT * FROM branch_office WHERE id_branch_office = :idUser AND password = :password", nativeQuery = true)
     BranchOffice findByUserLogin(Long idUser, String password);
 }
