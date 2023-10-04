@@ -34,12 +34,8 @@ public class ServiceBranchOffice {
         return branchOffice;
     }
 
-    public List<BranchOfficeDTO> listBranchOfficeDTO() {
-        List<BranchOffice> Users = iaRepositoryBranchOffice.findAll();
-        List<BranchOfficeDTO> UserDTOs = new ArrayList<>();
-        for (BranchOffice User : Users) {
-            UserDTOs.add(User.toDTO());
-        }
-        return UserDTOs;
+    public BranchOfficeDTO getUserDTO(Long idUser, String password) {
+        BranchOffice user = iaRepositoryBranchOffice.findByUserLogin(idUser, password);
+        return user.toDTO();
     }
 }

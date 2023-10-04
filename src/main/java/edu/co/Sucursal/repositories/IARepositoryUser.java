@@ -12,4 +12,7 @@ public interface IARepositoryUser extends JpaRepository<User, Long> {
     @Query(value = "SELECT * FROM USER WHERE ID_USER = :idUser", nativeQuery = true)
     User findByIdUserSQL(Long idUser);
 
+    @Query(value = "SELECT * FROM USER WHERE ID_USER = :idUser AND PASSWORD = :password", nativeQuery = true)
+    User findByUserLogin(Long idUser, String password);
+
 }

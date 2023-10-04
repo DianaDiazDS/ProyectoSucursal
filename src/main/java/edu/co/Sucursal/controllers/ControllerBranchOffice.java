@@ -25,9 +25,9 @@ public class ControllerBranchOffice {
         return branchOfficeService.saveBranchOffice(branchOffice);
     }
 
-    @GetMapping("/listUsersDTO")
-    public List<BranchOfficeDTO> listUsersDTO() {
-        return branchOfficeService.listBranchOfficeDTO();
+    @PostMapping("/getUserDTO/{idUser}/{password}")
+    public BranchOfficeDTO getUserDTO(@PathVariable Long idUser, @PathVariable String password) {
+        return branchOfficeService.getUserDTO(idUser, password);
     }
 
     @DeleteMapping("/deleteBranchOffice/{idBranchOffice}")

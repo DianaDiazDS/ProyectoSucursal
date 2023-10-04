@@ -28,9 +28,9 @@ public class ControllerUser {
         return serviceUser.listUsers();
     }
 
-    @GetMapping("/listPersonsDTO")
-	public List<UserDTO> listUsersDTO() {
-		return serviceUser.listUsersDTO();
+    @PostMapping("/getUserDTO/{idUser}/{password}")
+	public UserDTO getUserDTO(@PathVariable Long idUser, @PathVariable String password) {
+		return serviceUser.getUserDTO(idUser,password);
 	}
     
     @GetMapping("/calculateUserScore/{userId}")
