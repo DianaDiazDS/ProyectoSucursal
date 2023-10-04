@@ -32,11 +32,6 @@ public class ServiceLoan {
             throw new IllegalArgumentException("El puntaje del usuario es menor o igual a cero.");
         }
     }
-    public Loan saveLoan2(Loan loan) {
-            return iaRepositoryLoan.save(loan);
-        }
-    
-
 
     public void deleteLoan(Long idLoan) {
         iaRepositoryLoan.deleteById(idLoan);

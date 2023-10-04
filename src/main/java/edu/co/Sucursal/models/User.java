@@ -1,14 +1,11 @@
 package edu.co.Sucursal.models;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
 
-import com.example.demo.DTOs.UserDTO;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import edu.co.Sucursal.DTOs.UserDTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "user")

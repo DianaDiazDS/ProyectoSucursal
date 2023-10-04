@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.DTOs.UserDTO;
+import edu.co.Sucursal.DTOs.UserDTO;
 
 import edu.co.Sucursal.models.User;
 import edu.co.Sucursal.services.ServiceUser;
