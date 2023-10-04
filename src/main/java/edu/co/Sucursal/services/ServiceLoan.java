@@ -38,4 +38,9 @@ public class ServiceLoan {
         iaRepositoryLoan.save(Loan);
         return loan;
     }
+    
+    
+    public List<Loan> listLoansByUserAndType(Long userId, String loanType) {
+        return iaRepositoryLoan.findByUserIdAndLoanType(userId, loanType);
+    }
 }

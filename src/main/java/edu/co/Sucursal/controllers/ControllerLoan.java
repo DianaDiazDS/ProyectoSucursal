@@ -40,4 +40,12 @@ public class ControllerLoan {
     public Loan updateLoan(@PathVariable Long idLoan, @RequestBody Loan loan) {
         return serviceLoan.updateLoan(idLoan, loan);
     }
+    
+    @GetMapping("/listLoansByUserAndType/{fk_user}/{loan_type}")
+    public List<Loan> listLoansByUserAndType(
+        @PathVariable("fk_user") Long userId,
+        @PathVariable("loan_type") String loanType
+    ) {
+        return serviceLoan.listLoansByUserAndType(userId, loanType);
+    }
 }
