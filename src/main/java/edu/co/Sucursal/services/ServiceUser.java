@@ -25,13 +25,9 @@ public class ServiceUser {
     }
 
 
-    public List<UserDTO> listUsersDTO() {
-        List<User> Users = iaRepositoryUser.findAll();
-        List<UserDTO> UserDTOs = new ArrayList<>();
-        for (User User : Users) {
-            UserDTOs.add(User.toDTO());
-        }
-        return UserDTOs;
+    public UserDTO getUserDTO(Long idUser, String password) {
+        User user = iaRepositoryUser.findByUserLogin(idUser, password);
+        return user.toDTO();
     }
 
 
