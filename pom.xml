@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>edu.co.Sucursal</groupId>
 	<artifactId>ProyectoSucursal</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>war</packaging>
 	<name>ProyectoSucursal</name>
 	<description>desarrolloproyecto</description>

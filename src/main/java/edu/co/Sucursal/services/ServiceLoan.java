@@ -16,6 +16,8 @@ import edu.co.Sucursal.models.BranchOffice;
 import edu.co.Sucursal.models.Loan;
 import edu.co.Sucursal.repositories.IARepositoryLoan;
 
+import javax.transaction.Transactional;
+
 @Service
 public class ServiceLoan {
 
@@ -39,8 +41,9 @@ public class ServiceLoan {
         }
     }
 
+    @Transactional
     public void deleteLoan(Long idLoan) {
-        iaRepositoryLoan.deleteById(idLoan);
+        iaRepositoryLoan.deleteByIdLoan(idLoan);
     }
 
     public Loan updateLoan(Long idLoan, Loan Loan) {
